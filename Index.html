@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Panel de consulta - Gestión de Proyectos</title>
+        <style>
+            /*Aqui van los estilos*/
+            /* ==========================================================================
+   1. ESTILOS GENERALES Y LAYOUT
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff3f8;
+  color: #51434a;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Barra lateral de navegación (Sidebar) */
+.sidebar {
+  width: 240px;
+  background-color: #d81b78;
+  color: #ffffff;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+.sidebar h2 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #d81b78;
+  padding-bottom: 10px;
+  color: #fff3f8;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin-bottom: 12px;
+}
+
+.sidebar a {
+  color: #ffe0ef;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.sidebar a:hover {
+  background-color: #d81b78;
+  color: #ffffff;
+}
+
+/* Área principal de contenido */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+header {
+  margin-bottom: 25px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+header h1 {
+  color: #d81b78;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+header p {
+  color: #6f6066;
+}
+
+/* Tarjetas y Contenedores */
+.section-card {
+  background-color: #ffffff;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.section-card h2 {
+  color: #d81b78;
+  margin-bottom: 15px;
+  border-left: 4px solid #e83e8c;
+  padding-left: 10px;
+}
+
+/* Grid para las Herramientas y Técnicas */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.grid-card {
+  border: 1px solid #f2b8d4;
+  border-radius: 6px;
+  padding: 15px;
+  background-color: #fff8fc;
+}
+
+.grid-card h3 {
+  color: #d81b78;
+  margin-bottom: 8px;
+}
+
+.grid-card p {
+  font-size: 0.95rem;
+  color: #51434a;
+  line-height: 1.4;
+}
+
+/* Estilos para Glosario / Definiciones */
+.glossary-item {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #f0c3da;
+}
+
+.glossary-item:last-child {
+  border-bottom: none;
+}
+
+.glossary-term {
+  font-weight: bold;
+  color: #d81b78;
+}
+
+.glossary-item p {
+  line-height: 1.5;
+}
+
+.principles-list {
+  margin: 12px 0 0 22px;
+}
+
+.principles-list li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Etiquetas/Badges para categorías */
+.tag {
+  display: inline-block;
+  background-color: #ffe0ef;
+  color: #d81b78;
+  font-size: 0.8rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+/* Enlace dentro de las tarjetas */
+.card-link {
+  display: block;
+  margin-top: 10px;
+  color: #d81b78;
+  font-weight: bold;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+/* Paleta pinky: rosa suave, fucsia y detalles elegantes */
+button, input, select, textarea { font: inherit; }
+button { background: #d81b78; color: #fff; border: 0; border-radius: 7px; padding: 9px 14px; cursor: pointer; font-weight: 700; }
+button:hover { background: #d81b78; }
+input, select, textarea { border: 1px solid #e7a3c6; border-radius: 6px; padding: 8px; background: #fffafd; color: #51434a; }
+input:focus, select:focus, textarea:focus { outline: 2px solid #ed72ad; border-color: #d81b78; }
+.sidebar a:hover { background-color: #d81b78; color: #fff; }
+        </style>
+    </head>
+    <body>
+        <!--Barra de menu lateral-->
+        <nav class="sidebar">
+            <h2>Panel de proyectos</h2>
+            <ul>
+                <li><a href="#Definiciones">1. Conceptos básicos</a></li>
+                <li><a href="#Herramientas">2. Herramientas</a></li>
+                <li><a href="#Tecnicas">3. Métodos de trabajo</a></li>
+                <li><a href="#Proyecto">4. Actividades del curso</a></li>
+            </ul>
+
+        </nav>
+
+        <!--Contenido principal-->
+        <main class="main-content">
+            <header>
+                <h1>Gestión de Proyectos: Conceptos y Recursos</h1>
+                <p>Sitio de apoyo para consultar ideas, recursos y métodos útiles para gestionar proyectos.</p>
+                <p><strong><em>Realizado por: Luz Elena Moreno Durán</em></strong></p>
+            </header>
+
+            <!--Seccion 1: Definiciones-->
+            <section id="Definiciones" class="section-card">
+                <h2>Conceptos esenciales</h2>
+
+                <!--Estructura para agregar definiciones-->
+                <div class="glossary-item">
+                    <p class="glossary-term">1. ¿Cómo se define un proyecto?</p>
+                    <p>Un proyecto es un trabajo con duración limitada que busca producir algo específico, como un producto, un servicio o un resultado. Cuenta con una fecha de inicio y otra de cierre, y se desarrolla con metas, plazos, recursos y costos previamente establecidos.</p>
+                </div>
+
+                <div class="glossary-item">
+                    <p class="glossary-term">2. Rasgos principales de un proyecto</p>
+                    <p>Un proyecto tiene una duración definida y busca conseguir un resultado particular. Su planificación se precisa conforme avanza el trabajo. Además, posee objetivos concretos, depende de recursos limitados —como personal, dinero y tiempo—, reúne a diferentes interesados y puede enfrentar riesgos o situaciones inciertas.</p>
+                </div>
+
+                <div class="glossary-item">
+                    <p class="glossary-term">3. Diferencias entre proyectos y operaciones</p>
+                    <p>Un proyecto se realiza durante un periodo definido para obtener un resultado particular. En cambio, las operaciones son tareas habituales que se repiten y permiten que la organización siga funcionando. Por ejemplo, crear una plataforma para administrar activos corresponde a un proyecto, mientras que gestionar diariamente el préstamo de equipos de laboratorio es una operación.</p>
+                </div>
+
+                <div class="glossary-item">
+                    <p class="glossary-term">4. Capacidades de quien dirige un proyecto</p>
+                    <p>La persona encargada de dirigir un proyecto debe comunicarse con claridad, liderar al equipo, negociar y resolver dificultades. También necesita organizar las tareas, administrar los recursos, vigilar los tiempos y el presupuesto, anticipar riesgos y ajustar el plan cuando surjan cambios.</p>
+                </div>
+
+                <div class="glossary-item">
+                    <p class="glossary-term">5. Planificación del proyecto</p>
+                    <p>Es el documento que explica cómo se desarrollará y supervisará el proyecto. Incluye el trabajo que se realizará, las fechas, los costos, la calidad esperada, los recursos, la comunicación, los riesgos, las compras y la participación de los interesados. Orienta al equipo y permite comparar los avances con lo planeado.</p>
+                </div>
+
+                <div class="glossary-item">
+                    <p class="glossary-term">6. Principios de dirección de proyectos (PMBOK 8)</p>
+                    <p>La octava edición de la guía PMBOK del PMI presenta seis principios que orientan la forma de dirigir proyectos. No constituyen una secuencia obligatoria de tareas, sino criterios para analizar situaciones, liderar y decidir, tanto en métodos tradicionales como ágiles o combinados.</p>
+                    <ol class="principles-list">
+                        <li><strong>Comprender el proyecto como un conjunto.</strong> Analizar cómo se relacionan las personas, las áreas y los procesos, considerando que un cambio en una parte puede repercutir en las demás.</li>
+                        <li><strong>Priorizar los beneficios.</strong> El resultado debe atender necesidades reales y aportar utilidad a la organización, no limitarse a cumplir fechas. Es importante comprobar qué beneficios se alcanzaron.</li>
+                        <li><strong>Incorporar la calidad desde el comienzo.</strong> La calidad debe considerarse al planear y ejecutar cada actividad. Para ello se establecen criterios claros y se busca evitar fallas antes de que aparezcan.</li>
+                        <li><strong>Ejercer un liderazgo ético.</strong> Dirigir con honestidad y transparencia, responder por las decisiones tomadas y mantener una conducta correcta incluso cuando existen presiones de tiempo o presupuesto.</li>
+                        <li><strong>Considerar la sostenibilidad.</strong> Evaluar durante todo el proyecto sus consecuencias económicas, sociales y ambientales, incluyendo los efectos que puedan presentarse a largo plazo.</li>
+                        <li><strong>Promover la autonomía del equipo.</strong> Crear un ambiente de confianza en el que las personas puedan aportar ideas, tomar decisiones dentro de sus responsabilidades y comunicar posibles problemas.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!--Seccion 2: Herramientas-->
+            <section id="Herramientas" class="section-card">
+                <h2>Recursos para administrar proyectos</h2>
+                <p>Aplicaciones digitales que ayudan a organizar y dar seguimiento a los proyectos.</p>
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <h3>Herramienta</h3>
+                        <p>Resumen de su utilidad</p>
+                        <span class="tag">Área relacionada</span>
+                    </div>
+                </div>
+
+            </section>
+
+            <!--Seccion 3: Tecnicas-->
+            <section id="Tecnicas" class="section-card">
+                <h2>Métodos y enfoques de trabajo</h2>
+                <p>Formas de estudiar, organizar y supervisar el desarrollo de un proyecto.</p>
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <h3>Matriz de poder e interés</h3>
+                        <p>Método para ordenar a las personas y grupos relacionados con un proyecto de acuerdo con su influencia y el interés que tienen. Los distribuye en cuatro zonas —gestionar de cerca, conservar satisfechos, mantener al tanto y observar—, lo que ayuda a elegir cómo relacionarse con cada grupo. Esta herramienta permite registrar participantes y exportar o importar la información en formato JSON.</p>
+                        <a class="card-link" href="./MatrizPoderIntereses.html" target="_blank">Abrir matriz de poder e interés</a>
+                        <span class="tag">Participación de los interesados</span>
+                    </div>
+                </div>
+            </section>
+
+            <!--Seccion 4: Espacio para cargar Proyectos proyecto/curso-->
+            <section id="Proyecto" class="section-card">
+                <h2>Proyecto trabajado en clase</h2>
+                <p>Zona para reunir los registros y materiales de las actividades realizadas.</p>
+                <div class="glossary-item">
+                    <div class="glossary-term">Número de sesión </div>
+                    <p>Apuntes, archivos o enlaces relacionados con la sesión</p>
+                </div>
+            </section>
+        </main>
+    </body>
+</html> 
